@@ -14,9 +14,9 @@ app.post("/api/chat", async (req, res) => {
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: "Mesaj bulunamadı." });
     }
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(503).json({ error: "Sunucuda OPENAI_API_KEY ayarlanmamış. Hosting ayarlarından ekleyin." });
-    }
+  if (!process.env.GROQ_API_KEY) {
+  return res.status(503).json({ error: "Sunucuda GROQ_API_KEY ayarlanmamış." });
+}   
 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
   method: "POST",
   headers: {
